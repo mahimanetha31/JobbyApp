@@ -103,3 +103,9 @@
   font-size: 14px;
   cursor: pointer;
 }
+
+.sticky-filters {
+  position: sticky;
+  top: 80px;
+  align-self: flex-start;
+}

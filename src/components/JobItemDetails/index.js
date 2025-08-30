@@ -82,23 +82,23 @@ class JobItemDetails extends Component {
   })
 
   renderSkills = skills => (
-    <ul className='skills-list'>
+    <ul className="skills-list">
       {skills.map(skill => (
-        <li key={skill.name} className='skill-item'>
-          <img src={skill.image_url} alt={skill.name} className='skill-icon' />
-          <p className='skill-name'>{skill.name}</p>
+        <li key={skill.name} className="skill-item">
+          <img src={skill.image_url} alt={skill.name} className="skill-icon" />
+          <p className="skill-name">{skill.name}</p>
         </li>
       ))}
     </ul>
   )
 
   renderLifeAtCompany = lifeAtCompany => (
-    <div className='life-at-company-section'>
-      <p className='life-description'>{lifeAtCompany.description}</p>
+    <div className="life-at-company-section">
+      <p className="life-description">{lifeAtCompany.description}</p>
       <img
         src={lifeAtCompany.image_url}
-        alt='life at company'
-        className='life-image'
+        alt="life at company"
+        className="life-image"
       />
     </div>
   )
@@ -121,69 +121,69 @@ class JobItemDetails extends Component {
     return (
       <>
         <Header />
-        <div className='job-details-container'>
-          <div className='job-card'>
-            <div className='job-header'>
+        <div className="job-details-container">
+          <div className="job-card">
+            <div className="job-header">
               <img
                 src={companyLogoUrl}
-                alt='job details company logo'
-                className='job-logo'
+                alt="job details company logo"
+                className="job-logo"
               />
               <div>
-                <h1 className='job-title'>{title}</h1>
-                <div className='rating'>
-                  <BsStar className='icon star-icon' />
+                <h1 className="job-title">{title}</h1>
+                <div className="rating">
+                  <BsStar className="icon star-icon" />
                   <p>{rating}</p>
                 </div>
               </div>
             </div>
 
-            <div className='job-info'>
-              <div className='location-employment'>
-                <div className='info-item'>
-                  <BsGeoAlt className='icon' />
+            <div className="job-info">
+              <div className="location-employment">
+                <div className="info-item">
+                  <BsGeoAlt className="icon" />
                   <p>{location}</p>
                 </div>
-                <div className='info-item'>
-                  <BsBriefcase className='icon' />
+                <div className="info-item">
+                  <BsBriefcase className="icon" />
                   <p>{employmentType}</p>
                 </div>
               </div>
-              <p className='salary'>{packagePerAnnum}</p>
+              <p className="salary">{packagePerAnnum}</p>
             </div>
 
             <hr />
 
-            <div className='description-section'>
-              <div className='desc-heading'>
+            <div className="description-section">
+              <div className="desc-heading">
                 <h2>Description</h2>
                 <a
                   href={companyWebsiteUrl}
-                  target='_blank'
-                  rel='noreferrer'
-                  className='company-link'
+                  target="_blank"
+                  rel="noreferrer"
+                  className="company-link"
                 >
                   Visit
                 </a>
                 <img
                   src={companyLogoUrl}
-                  alt='website logo'
-                  className='website-logo'
+                  alt="website logo"
+                  className="website-logo"
                 />
               </div>
 
               <p>{jobDescription}</p>
             </div>
 
-            <h2 className='section-heading'>Skills</h2>
+            <h2 className="section-heading">Skills</h2>
             {this.renderSkills(skills)}
 
-            <h2 className='section-heading'>Life at Company</h2>
+            <h2 className="section-heading">Life at Company</h2>
             {this.renderLifeAtCompany(lifeAtCompany)}
           </div>
 
-          <h2 className='section-heading'>Similar Jobs</h2>
-          <ul className='similar-jobs-list'>
+          <h2 className="section-heading">Similar Jobs</h2>
+          <ul className="similar-jobs-list">
             {similarJobs.map(job => (
               <SimilarJobCard key={job.id} jobDetails={job} />
             ))}

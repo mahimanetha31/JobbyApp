@@ -1,11 +1,20 @@
 import Profile from '../Profile'
 import './index.css'
 
+const locationList = [
+  {id: 'HYDERABAD', label: 'Hyderabad'},
+  {id: 'BANGALORE', label: 'Bangalore'},
+  {id: 'CHENNAI', label: 'Chennai'},
+  {id: 'DELHI', label: 'Delhi'},
+  {id: 'MUMBAI', label: 'Mumbai'},
+]
+
 const FiltersGroup = ({
   employmentTypesList,
   salaryRangesList,
   updateEmploymentType,
   updateSalaryRange,
+  updateLocation,
 }) => {
   const onChangeEmploymentType = event => {
     updateEmploymentType(event.target.value)
@@ -15,8 +24,12 @@ const FiltersGroup = ({
     updateSalaryRange(event.target.value)
   }
 
+  const onChangeLocation = event => {
+    updateLocation(event.target.value, event.target.checked)
+  }
+
   return (
-    <div className="filters-group-container">
+    <div className="filters-group-container sticky-filters">
       <Profile />
       <hr className="separator" />
       <h1 className="filter-heading">Type of Employment</h1>
@@ -46,6 +59,21 @@ const FiltersGroup = ({
               onChange={onChangeSalary}
             />
             <label htmlFor={each.salaryRangeId}>{each.label}</label>
+          </li>
+        ))}
+      </ul>
+      <hr className="separator" />
+      <h1 className="filter-heading">Locations</h1>
+      <ul className="filter-list">
+        {locationList.map(each => (
+          <li key={each.id} className="filter-item">
+            <input
+              type="checkbox"
+              id={each.id}
+              value={each.label}
+              onChange={onChangeLocation}
+            />
+            <label htmlFor={each.id}>{each.label}</label>
           </li>
         ))}
       </ul>

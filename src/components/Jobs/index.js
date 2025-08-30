@@ -22,6 +22,7 @@ class Jobs extends Component {
     employmentType: [],
     salaryRange: '',
     searchInput: '',
+    locations: [],
   }
 
   componentDidMount() {
@@ -30,10 +31,11 @@ class Jobs extends Component {
 
   getJobs = async () => {
     this.setState({isLoading: true})
-    const {employmentType, salaryRange, searchInput} = this.state
+    const {employmentType, salaryRange, searchInput, locations} = this.state
     const employmentTypesQuery = employmentType.join(',')
+    const locationsQuery = locations.join(',')
     const jwtToken = Cookies.get('jwt_token')
-    const apiUrl = `https://apis.ccbp.in/jobs?employment_type=${employmentTypesQuery}&minimum_package=${salaryRange}&search=${searchInput}`
+    const apiUrl = `https://apis.ccbp.in/jobs?employment_type=${employmentTypesQuery}&minimum_package=${salaryRange}&search=${searchInput}&location=${locationsQuery}`
 
     const options = {
       headers: {
@@ -83,6 +85,15 @@ class Jobs extends Component {
     this.setState({salaryRange: range}, this.getJobs)
   }
 
+  updateLocation = (location, isChecked) => {
+    this.setState(prevState => {
+      const updatedLocations = isChecked
+        ? [...prevState.locations, location]
+        : prevState.locations.filter(each => each !== location)
+      return {locations: updatedLocations}
+    }, this.getJobs)
+  }
+
   updateSearchInput = event => {
     this.setState({searchInput: event.target.value})
   }
@@ -130,6 +141,7 @@ class Jobs extends Component {
             salaryRangesList={salaryRangesList}
             updateEmploymentType={this.updateEmploymentType}
             updateSalaryRange={this.updateSalaryRange}
+            updateLocation={this.updateLocation}
           />
           <div className="jobs-content">
             <div className="search-container">
